@@ -199,6 +199,27 @@ class Triangle_Test {
 	}
 
 	@Test
+    @DisplayName("Test constructor with valid string array input")
+    void testConstructorWithValidInput() {
+        Triangle validTriangle = new Triangle(new String[] {"3", "4", "5"});
+        assertEquals(Triangle.TYPE.SCALENE, validTriangle.getCurrent_type(), "Valid string array should create a scalene triangle");
+    }
+
+    @Test
+    @DisplayName("Test constructor with invalid string array input (NumberFormatException)")
+    void testConstructorWithInvalidInput() {
+        Triangle invalidTriangle = new Triangle(new String[] {"a", "b", "c"});
+        assertNull(invalidTriangle.getCurrent_type(), "Invalid string array should not set triangle type");
+    }
+
+    @Test
+    @DisplayName("Test constructor with incorrect array length")
+    void testConstructorWithIncorrectArrayLength() {
+        Triangle shortArrayTriangle = new Triangle(new String[] {"3", "4"});
+        assertNull(shortArrayTriangle.getCurrent_type(), "Array with incorrect length should not set triangle type");
+    }
+
+	@Test
 	void testMain() {
 		 // Test av main är vanligtvis inte nödvändigt
 	}
